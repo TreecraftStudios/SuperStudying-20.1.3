@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/debug/dbg.css" />
+<link rel="stylesheet" href="/styles.css" />
+<body style="background-image: url('/assets/bg3.jpeg');">
+  <div id="dragdiv">
+    <div id="dragdivheader">JavaScript Console</div>
+    <h4>
+      Error: Code 56: Developer Tools Have Been Disabled By Your Administrator.
+    </h4>
+    <a href="saver.html" class="myButton">Screensaver</a>
+    <a href="vmlinuz.html" class="myButton">Launch VM</a>
+  </div>
+  <div class="output"></div>
+  <script>
+    //Make the DIV element draggagle:
+    dragElement(document.getElementById("dragdiv"));
+
+    function dragElement(elmnt) {
+      var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+      if (document.getElementById(elmnt.id + "header")) {
+        /* if present, the header is where you move the DIV from:*/
+        document.getElementById(
+          elmnt.id + "header"
+        ).onmousedown = dragMouseDown;
+      } else {
+        /* otherwise, move the DIV from anywhere inside the DIV:*/
+        elmnt.onmousedown = dragMouseDown;
+      }
+
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+      }
+
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+        elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+      }
+
+      function closeDragElement() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+  </script>
+  <script>
+    var realConsoleLog = console.log;
+    console.log = function () {
+      var message = [].join.call(arguments, " ");
+      // Display the message somewhere... (jQuery example)
+      $(".output").text(message);
+      realConsoleLog.apply(console, arguments);
+    };
+
+    console.log("Hello", "Running", "JS", "Console", "3.9.2");
+  </script>
+</body>

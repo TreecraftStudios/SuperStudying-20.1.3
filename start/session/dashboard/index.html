@@ -1,0 +1,87 @@
+<body style="background-image: url('/assets/bg5white.jpeg');">
+<title>Study Dashboard | SuperStudying.xyz</title>
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="w3styles.css" />
+<div class="w3-bar w3-black">
+  <button class="w3-bar-item w3-button" onclick="openCity('Home')">
+    Home
+  </button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Help')">
+    Help
+  </button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Math')">
+    Math
+  </button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Litteracy')">
+    Litteracy
+  </button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Social')">
+    Social Studies
+  </button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Science')">
+    Science
+  </button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Code')">
+    Code Tutorials (NEW)
+  </button>
+  <button class="w3-bar-item w3-button" onclick="openCity('Info')">
+    Info
+  </button>
+</div>
+
+<div id="Home" class="w3-container city">
+  <h2>Home</h2>
+  <h3>Welcome To Your Dashboard!</h3>
+  <h3>Updates:</h3>
+  <h4>Version 3.6.1 Realese Notes:</h4>
+  <br></br>
+  <p>No Current Notes/Updates</p>
+</div>
+
+<div id="Info" class="w3-container city" style="display: none;">
+  <h2>Information:</h2>
+</div>
+
+<div id="Info" class="w3-container city" style="display: none;">
+  <h2>Math Study Guide</h2>
+  <p>We Have Not Finished This Yet!</p>
+</div>
+
+<div id="Litteracy" class="w3-container city" style="display: none;">
+  <h2>Litteracy Study Guide</h2>
+  <p>We Have Not Finished This Yet!</p>
+</div>
+
+<div id="Social" class="w3-container city" style="display: none;">
+  <h2>Social Studies Study Guide</h2>
+  <p>We Have Not Finished This Yet!</p>
+</div>
+
+<div id="Science" class="w3-container city" style="display: none;">
+  <h2>Science Study Guide</h2>
+  <p>We Have Not Finished This Yet!</p>
+</div>
+
+<div id="Help" class="w3-container city" style="display: none;">
+  <h2>Help</h2>
+  <a class="myButton" href="help.html">Get Help</a>
+</div>
+
+<div id="Code" class="w3-container city" style="display: none;">
+  <h2>Code Tutorials:</h2>
+  <a class="myButton" href="https://code.superstudying.org/"
+    >Launch SuperStudying Code</a
+  >
+</div>
+
+<script>
+  function openCity(cityName) {
+    var i;
+    var x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(cityName).style.display = "block";
+  }
+</script>
